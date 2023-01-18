@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ijsjes medric</title>
+    <script src="../js/jquery-3.6.1.js"></script>
+    <link rel="stylesheet" href="ijskar.css">
+<script>
+    $(document).ready(function(){
+    var naam = $("#naam").val
+
+
+        $('div.bollen li').on("click",function(){
+        $(this).html(`
+        <div class="smaak">
+                    <ul>
+                        <li><img src="aarbei ijsbol.PNG" alt="aarbei"></li>
+                        <li><img src="vanille ijsbol.PNG" alt="vanille"></li>
+                        <li><img src="chocolade ijsbol.PNG" alt="chocolade"></li>
+                    </ul>
+                </div>
+        `)
+        })
+
+        
+    
+
+
+
+    })
+    
+
+</script>
+
+</head>
+<body>
+    
+    <fieldset>
+        <legend>geef je bestelling in:</legend>
+        <label for="naam">Wat is uw naam?</label>
+        <input type="text" id="naam">
+        <br>
+        <label for="bollen">aantal bollen</label>
+        <div class="bollen">
+            <ul>
+                <li><img src="leeg ijsbol.png" alt="foto"></li>
+                <li><img src="leeg ijsbol.png" alt="foto"></li>
+                <li><img src="leeg ijsbol.png" alt="foto"></li>
+                
+            </ul>
+        </div>
+        <br>
+        <label for="verpakking">welke verpakking?</label>
+        <div class="verpakking">
+            <ul>
+                <li>hoorntje<img src="" alt=""></li>
+                <li>potje<img src="" alt=""></li>
+                <li>extra large<img src="" alt=""></li>
+            </ul>
+        </div>
+        
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,27 @@
+*
+{
+    
+}
+body{
+    margin: 25px;
+    background-color: white;
+
+}
+html
+{
+    background-color: red;
+}
+.bollen ul
+{
+    list-style-type: none;
+}
+
+.bollen img
+{
+width: 100px;
+height: auto;
+}
+div.smaak ul li
+{
+    display: inline-block;
+}
