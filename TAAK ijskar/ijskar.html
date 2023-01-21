@@ -5,34 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ijsjes medric</title>
-    <script src="../js/jquery-3.6.1.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" href="ijskar.css">
-<script>
-    $(document).ready(function(){
-    var naam = $("#naam").val
-
-
-        $('div.bollen li').on("click",function(){
-        $(this).html(`
-        <div class="smaak">
-                    <ul>
-                        <li><img src="aarbei ijsbol.PNG" alt="aarbei"></li>
-                        <li><img src="vanille ijsbol.PNG" alt="vanille"></li>
-                        <li><img src="chocolade ijsbol.PNG" alt="chocolade"></li>
-                    </ul>
-                </div>
-        `)
+    <script>
+         var telleraardbei = 0
+         var tellervanille = 0
+         var tellerchocolade = 0
+        function aardbei()
+            {
+                telleraardbei += 1
+                console.log(telleraardbei + " aardbei")
+            }
+            function vanille()
+            {
+                tellervanille += 1
+                console.log(tellervanille + " vanille")
+            }
+            function chocolade()
+            {
+                tellerchocolade += 1
+                console.log(tellerchocolade + " chocolade")
+            }
+        $(document).ready(function(){
+            var naam = $("#naam").val
+           
+            // var bollen,aarbei,vanille,chocolade
+            
+            $('div.bollen li').on("click",function(){
+                $(this).html(`
+                    <div class="smaak">
+                        <ul>
+                            <li><img src="aarbei ijsbol.PNG" alt="aardbei" onclick="aardbei()"></li>
+                            <li><img src="vanille ijsbol.PNG" alt="vanille" onclick="vanille()"></li>
+                            <li><img src="chocolade ijsbol.PNG" alt="chocolade" onclick="chocolade()"></li>
+                        </ul>
+                    </div>
+                `)
+            })
+            // $('img[alt="aardbei"]').on("click",function(){
+            //     aardbei++
+            //     console.log(aardbei)
+            //     alert(aardbei)
+            // })
+            
         })
-
-        
-    
-
-
-
-    })
-    
-
-</script>
+    </script>
 
 </head>
 <body>
