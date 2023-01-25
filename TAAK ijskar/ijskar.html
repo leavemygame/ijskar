@@ -11,25 +11,43 @@
          var telleraardbei = 0
          var tellervanille = 0
          var tellerchocolade = 0
+         var tellerTotaal = 0
         function aardbei()
             {
-                telleraardbei += 1
-                console.log(telleraardbei + " aardbei")
+                if (tellerTotaal < 3) {
+                    telleraardbei += 1
+                    console.log(telleraardbei + " aardbei")
+                    tellerTotaal += 1
+                } else {
+                    alert("je hebt je maximale ijsbollen al bereikt")
+                }
             }
-            function vanille()
+        function vanille()
             {
-                tellervanille += 1
-                console.log(tellervanille + " vanille")
+                if (tellerTotaal < 3) {
+                    tellervanille += 1
+                    console.log(tellervanille + " vanille")
+                    tellerTotaal += 1
+                } else {
+                    alert("je hebt je maximale ijsbollen al bereikt")
+                }
+                
             }
-            function chocolade()
+        function chocolade()
             {
-                tellerchocolade += 1
-                console.log(tellerchocolade + " chocolade")
+                if (tellerTotaal < 3) {
+                    tellerchocolade += 1
+                    console.log(tellerchocolade + " chocolade")
+                    tellerTotaal += 1
+                } else {
+                    alert("je hebt je maximale ijsbollen al bereikt")
+                }
+               
             }
         $(document).ready(function(){
             var naam = $("#naam").val
            
-            // var bollen,aarbei,vanille,chocolade
+            
             
             $('div.bollen li').on("click",function(){
                 $(this).html(`
