@@ -1,6 +1,6 @@
 *
 {
-    
+list-style-type: none;
 }
 body{
     margin: 25px;
@@ -14,9 +14,10 @@ html
 .bollen ul
 {
     list-style-type: none;
+    width: 100px;
 }
 
-.bollen img
+#links img
 {
 width: 100px;
 height: auto;
@@ -24,4 +25,14 @@ height: auto;
 div.smaak ul li
 {
     display: inline-block;
+}
+.verpakking ul
+{
+    list-style-type: none;
+}
+#links
+{
+    float: left;
+    width: 45%;
+    background-color: white;
 }
