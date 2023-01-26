@@ -46,7 +46,7 @@
                
             }
         $(document).ready(function(){
-            var naam = $("#naam").val
+           
            
             
             
@@ -73,7 +73,12 @@
                 tellerTotaalmax = 5
             })
             
-            
+            $("#Overzicht").on("click", function(){
+                
+                $("#rechts").show()
+                var naam = $("#naam").val()
+                $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
+            })
         })
     </script>
 
@@ -103,7 +108,12 @@
                 <li><img src="ijscoupexl.jpg" alt="foto3"></li>
             </ul>
         </div>
-        
+        <button id="Overzicht">Toon overzicht</button>
+    </fieldset>
+
+    <fieldset id="rechts" hidden>
+        <legend>Bestelling</legend>
+        <label for="Aanspreking" id="Aanspreking">Hallo </label>
     </fieldset>
 </body>
 </html>

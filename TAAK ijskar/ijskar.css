@@ -36,3 +36,9 @@ div.smaak ul li
     width: 45%;
     background-color: white;
 }
+#rechts
+{
+    float: right;
+    width: 45%;
+    background-color: white;
+}
