@@ -42,3 +42,38 @@ div.smaak ul li
     width: 45%;
     background-color: white;
 }
+div.sauzen ul li
+{
+    display: inline-block;
+}
+div.extras ul li
+{
+    display: inline-block;
+}
+
+
+
+
+
+
+
+/* responsive */
+@media only screen and (min-width:900px) {
+    .links, .midden{
+        width: 45%;
+    }   
+}
+@media only screen and (max-width:900px) and (min-width:500px) {
+    .links, .midden{
+        width: 35%;
+    }   
+}
+@media only screen and (max-width:500px) {
+    .links, .rechts{
+        width: 100%;
+    }   
+    /* .rechts
+    {
+        display: none;
+    } */
+}

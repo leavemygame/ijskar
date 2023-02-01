@@ -1,3 +1,11 @@
+<!-- nog te doen 
+    -als er een ijsbol geselecteerd is dan moeten de andere verwijderd worden
+    -responsive web werkt niet echt
+    -beveiliging
+    -
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +22,8 @@
         var tellerTotaal = 0
         var tellerTotaalmax = 3
         var vorm = ""
-        
+        var sauzen = ""
+        var extras
         function aardbei()
             {
                 if (tellerTotaal < tellerTotaalmax) {
@@ -24,6 +33,7 @@
                 } else {
                     alert("je hebt je maximale ijsbollen al bereikt")
                 }
+                
             }
         function vanille()
             {
@@ -67,6 +77,15 @@
             $('div.verpakking li').on("click",function(){
                 $(this).siblings().hide();
             })
+            $(document).on("click","div.smaak li",function(){
+                $(this).siblings().hide();
+            })
+            $('div.sauzen li').on("click",function(){
+                $(this).siblings().hide();
+            })
+            $('div.extras li').on("click",function(){
+                $(this).siblings().hide();
+            })
             $('div.verpakking li img[alt="foto3').on("click",function(){
                 $("div.bollen").append(`
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
@@ -81,13 +100,40 @@
             $('div.verpakking li img[alt="foto2').on("click",function(){
                 vorm = "potje"
             })
+
+            $('div.sauzen li img[alt="foto4').on("click",function(){
+                sauzen = "chocoladesaus"
+            })
+            $('div.sauzen li img[alt="foto5').on("click",function(){
+                sauzen = "caramelsaus"
+            })
+            $('div.sauzen li img[alt="foto6').on("click",function(){
+                sauzen = "aardbeisaus"
+            })
+
+            $('div.extras li img[alt="foto7').on("click",function(){
+                extras = "bresiliennenootjes"
+            })
+            $('div.extras li img[alt="foto8').on("click",function(){
+                extras = "smarties"
+            })
+            $('div.extras li img[alt="foto9').on("click",function(){
+                extras = "waaiers"
+            })
+
+
+
+
+
             $("#Overzicht").on("click", function(){
                 
                 $("#rechts").show()
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
                 $("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
-                $("#vormx").append("je hebt gekozen voor de vorm: " + "<br>" + vorm)
+                $("#vormx").append("je hebt gekozen voor de vorm: " + vorm)
+                $("#sauzenx").append("de saus die je hebt gekozen: " + sauzen)
+                $("#extrasx").append("leuke extra! " + extras)
             })
         })
     </script>
@@ -118,18 +164,20 @@
                 <li><img src="ijscoupexl.jpg" alt="foto3"></li>
             </ul>
         </div>
+        <label for="sauzen">welke saus?</label>
         <div class="sauzen">
             <ul>
-                <li>chocolade</li>
-                <li>caramel</li>
-                <li>aardbeisaus</li>
+                <li><img src="chocoladesaus.jpg" alt="foto4"></li>
+                <li><img src="caramelsaus.jpg" alt="foto5"></li>
+                <li><img src="aardbeisaus.webp" alt="foto6"></li>
             </ul>
         </div>
-        <div class="extra's">
+        <label for="extra">zin in wat extras?</label>
+        <div class="extras">
             <ul>
-                <li>bresiliennenootjes</li>
-                <li>smarties</li>
-                <li>waaiers</li>
+                <li><img src="bresiliennenootjes.jpg" alt="foto7"></li>
+                <li><img src="smarties.jpg" alt="foto8"></li>
+                <li><img src="waaiers.jpg" alt="foto9"></li>
             </ul>
         </div>
         <button id="Overzicht">Toon overzicht</button>
@@ -145,6 +193,12 @@
         <br>
         <br>
         <label for="vorm" id="vormx"></label>
+        <br>
+        <br>
+        <label for="sauzen" id="sauzenx"></label>
+        <br>
+        <br>
+        <label for="extras" id="extrasx"></label>
     </fieldset>
 </body>
 </html>
