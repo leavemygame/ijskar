@@ -13,6 +13,8 @@
         var tellerchocolade = 0
         var tellerTotaal = 0
         var tellerTotaalmax = 3
+        var vorm = ""
+        
         function aardbei()
             {
                 if (tellerTotaal < tellerTotaalmax) {
@@ -71,14 +73,21 @@
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 `)
                 tellerTotaalmax = 5
+                vorm = "coupeXL"
             })
-            
+            $('div.verpakking li img[alt="foto1').on("click",function(){
+                vorm = "hoorntje"
+            })
+            $('div.verpakking li img[alt="foto2').on("click",function(){
+                vorm = "potje"
+            })
             $("#Overzicht").on("click", function(){
                 
                 $("#rechts").show()
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-                $("#aardbeix").append("aantal bollen aardbei" + telleraardbei)
+                $("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
+                $("#vormx").append("je hebt gekozen voor de vorm: " + "<br>" + vorm)
             })
         })
     </script>
@@ -104,8 +113,8 @@
         <label for="verpakking">welke verpakking?</label>
         <div class="verpakking">
             <ul>
-                <li><img src="hoorntjeleeg.jpg" alt="foto"></li>
-                <li><img src="ijspotjeleeg.jpg" alt="foto"></li>
+                <li><img src="hoorntjeleeg.jpg" alt="foto1"></li>
+                <li><img src="ijspotjeleeg.jpg" alt="foto2"></li>
                 <li><img src="ijscoupexl.jpg" alt="foto3"></li>
             </ul>
         </div>
@@ -115,7 +124,13 @@
     <fieldset id="rechts" hidden>
         <legend>Bestelling</legend>
         <label for="Aanspreking" id="Aanspreking">Hallo </label>
-        <label for="aardbeix" id="aardbeix"></label>
+        <br>
+        <br>
+        <br>
+        <label for="ijsbollen" id="ijsbolx"></label>
+        <br>
+        <br>
+        <label for="vorm" id="vormx"></label>
     </fieldset>
 </body>
 </html>
