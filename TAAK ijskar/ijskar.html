@@ -1,5 +1,4 @@
 <!-- nog te doen 
-    -als er een ijsbol geselecteerd is dan moeten de andere verwijderd worden
     -responsive web werkt niet echt
     -beveiliging bij dubbelklikken op ijsbollen
     -homepagina maken
@@ -19,15 +18,8 @@
         
         var tellerTotaal = 0
         var tellerTotaalmax = 3
-        // var vorm = ""
-        // var sauzen = ""
-        // var extras
         
         $(document).ready(function(){
-           
-           
-            
-            
             $(document).on("click", "div.bollen li", function(){
                 $(this).html(`
                     <div class="smaak">
@@ -42,7 +34,8 @@
             })
            
             $(document).on("click","div.smaak li img",function(){
-                $(this).siblings().hide();
+                $(this).siblings().removeClass("rand")
+                $(this).toggleClass("rand")
                 $("#ijsbolx").append($(this).attr("alt"))
 
                 if (tellerTotaal < tellerTotaalmax) {
@@ -52,17 +45,17 @@
                 }
                
             })
-            $('div.verpakking li').on("click",function(){
-                $(this).toggleClass("rand");
-                //$(this).siblings().toggleClass("randaf");
+            $(document).on("click",'div.verpakking li',function(){
+                $(this).siblings().removeClass("rand")
+                $(this).toggleClass("rand")
             })
-            $('div.sauzen li').on("click",function(){
-                $(this).toggleClass("rand");
-                //$(this).siblings().toggleClass("randaf");
+            $(document).on("click",'div.sauzen li',function(){
+                $(this).siblings().removeClass("rand")
+                $(this).toggleClass("rand")
             })
-            $('div.extras li').on("click",function(){
-                $(this).toggleClass("rand");
-                //$(this).siblings().toggleClass("randaf");
+            $(document).on("click",'div.extras li',function(){
+                $(this).siblings().removeClass("rand")
+                $(this).toggleClass("rand")
             })
             $('div.verpakking li img[alt="foto3').on("click",function(){
                 $("div.bollen").append(`
@@ -71,34 +64,8 @@
                 `)
 
                 tellerTotaalmax = 5
-                //vorm = "coupeXL"
             })
-            // $('div.verpakking li img[alt="foto1').on("click",function(){
-            //     vorm = "hoorntje"
-            // })
-            // $('div.verpakking li img[alt="foto2').on("click",function(){
-            //     vorm = "potje"
-            // })
-
-            // $('div.sauzen li img[alt="foto4').on("click",function(){
-            //     sauzen = "chocoladesaus"
-            // })
-            // $('div.sauzen li img[alt="foto5').on("click",function(){
-            //     sauzen = "caramelsaus"
-            // })
-            // $('div.sauzen li img[alt="foto6').on("click",function(){
-            //     sauzen = "aardbeisaus"
-            // })
-
-            // $('div.extras li img[alt="foto7').on("click",function(){
-            //     extras = "bresiliennenootjes"
-            // })
-            // $('div.extras li img[alt="foto8').on("click",function(){
-            //     extras = "smarties"
-            // })
-            // $('div.extras li img[alt="foto9').on("click",function(){
-            //     extras = "waaiers"
-            // })
+      
             $(document).on("click","div.sauzen li img",function(){
                 $("#sauzenx").append($(this).attr("alt"))
             })
@@ -115,7 +82,6 @@
                 $("#rechts").show()
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-                //$("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
                 $("#vormx").append("je hebt gekozen voor de vorm: ")
                 $("#sauzenx").append("de saus die je hebt gekozen: ")
                 $("#extrasx").append("leuke extra! ")
