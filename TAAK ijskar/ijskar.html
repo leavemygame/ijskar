@@ -16,47 +16,13 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" href="ijskar.css">
     <script>
-        var telleraardbei = 0
-        var tellervanille = 0
-        var tellerchocolade = 0
+        
         var tellerTotaal = 0
         var tellerTotaalmax = 3
         var vorm = ""
         var sauzen = ""
         var extras
-        function aardbei()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    telleraardbei += 1
-                    console.log(telleraardbei + " aardbei")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-                
-            }
-        function vanille()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    tellervanille += 1
-                    console.log(tellervanille + " vanille")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-                
-            }
-        function chocolade()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    tellerchocolade += 1
-                    console.log(tellerchocolade + " chocolade")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-               
-            }
+        
         $(document).ready(function(){
            
            
@@ -66,9 +32,9 @@
                 $(this).html(`
                     <div class="smaak">
                         <ul>
-                            <li><img src="aarbei ijsbol.PNG" alt="aardbei" onclick="aardbei()"></li>
-                            <li><img src="vanille ijsbol.PNG" alt="vanille" onclick="vanille()"></li>
-                            <li><img src="chocolade ijsbol.PNG" alt="chocolade" onclick="chocolade()"></li>
+                            <li><img src="aarbei ijsbol.PNG" alt="aardbei" ></li>
+                            <li><img src="vanille ijsbol.PNG" alt="vanille" ></li>
+                            <li><img src="chocolade ijsbol.PNG" alt="chocolade" ></li>
                         </ul>
                     </div>
                 `)
@@ -77,8 +43,16 @@
             $('div.verpakking li').on("click",function(){
                 $(this).siblings().hide();
             })
-            $(document).on("click","div.smaak li",function(){
+            $(document).on("click","div.smaak li img",function(){
                 $(this).siblings().hide();
+                $("#ijsbolx").append($(this).attr("alt"))
+
+                if (tellerTotaal < tellerTotaalmax) {
+                    tellerTotaal += 1
+                } else {
+                alert("je hebt je maximale ijsbollen al bereikt")
+                }
+               
             })
             $('div.sauzen li').on("click",function(){
                 $(this).siblings().hide();
@@ -91,6 +65,7 @@
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 `)
+
                 tellerTotaalmax = 5
                 vorm = "coupeXL"
             })
@@ -130,7 +105,7 @@
                 $("#rechts").show()
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-                $("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
+                //$("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
                 $("#vormx").append("je hebt gekozen voor de vorm: " + vorm)
                 $("#sauzenx").append("de saus die je hebt gekozen: " + sauzen)
                 $("#extrasx").append("leuke extra! " + extras)
