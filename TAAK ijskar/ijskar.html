@@ -1,5 +1,4 @@
 <!-- nog te doen 
-    -responsive web werkt niet echt
     -beveiliging bij dubbelklikken op ijsbollen
     -homepagina maken
 
@@ -57,7 +56,7 @@
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
             })
-            $('div.verpakking li img[alt="foto3').on("click",function(){
+            $('div.verpakking li img[alt="coupeXL').on("click",function(){
                 $("div.bollen").append(`
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
@@ -82,9 +81,8 @@
                 $("#rechts").show()
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-                $("#vormx").append("je hebt gekozen voor de vorm: ")
-                $("#sauzenx").append("de saus die je hebt gekozen: ")
-                $("#extrasx").append("leuke extra! ")
+                
+               
             })
         })
     </script>
@@ -143,13 +141,13 @@
         <label for="ijsbollen" id="ijsbolx"></label>
         <br>
         <br>
-        <label for="vorm" id="vormx"></label>
+        <label for="vorm" id="vormx">Je hebt gekozen voor de vorm: </label>
         <br>
         <br>
-        <label for="sauzen" id="sauzenx"></label>
+        <label for="sauzen" id="sauzenx">De saus die je hebt gekozen: </label>
         <br>
         <br>
-        <label for="extras" id="extrasx"></label>
+        <label for="extras" id="extrasx">Leuke extra! </label>
     </fieldset>
 </body>
 </html>
