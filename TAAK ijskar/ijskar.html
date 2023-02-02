@@ -19,9 +19,9 @@
         
         var tellerTotaal = 0
         var tellerTotaalmax = 3
-        var vorm = ""
-        var sauzen = ""
-        var extras
+        // var vorm = ""
+        // var sauzen = ""
+        // var extras
         
         $(document).ready(function(){
            
@@ -40,9 +40,7 @@
                 `)
                 $("div.bollen ul").css("width", "100%");
             })
-            $('div.verpakking li').on("click",function(){
-                $(this).siblings().hide();
-            })
+           
             $(document).on("click","div.smaak li img",function(){
                 $(this).siblings().hide();
                 $("#ijsbolx").append($(this).attr("alt"))
@@ -54,11 +52,17 @@
                 }
                
             })
+            $('div.verpakking li').on("click",function(){
+                $(this).toggleClass("rand");
+                //$(this).siblings().toggleClass("randaf");
+            })
             $('div.sauzen li').on("click",function(){
-                $(this).siblings().hide();
+                $(this).toggleClass("rand");
+                //$(this).siblings().toggleClass("randaf");
             })
             $('div.extras li').on("click",function(){
-                $(this).siblings().hide();
+                $(this).toggleClass("rand");
+                //$(this).siblings().toggleClass("randaf");
             })
             $('div.verpakking li img[alt="foto3').on("click",function(){
                 $("div.bollen").append(`
@@ -67,37 +71,43 @@
                 `)
 
                 tellerTotaalmax = 5
-                vorm = "coupeXL"
+                //vorm = "coupeXL"
             })
-            $('div.verpakking li img[alt="foto1').on("click",function(){
-                vorm = "hoorntje"
-            })
-            $('div.verpakking li img[alt="foto2').on("click",function(){
-                vorm = "potje"
-            })
+            // $('div.verpakking li img[alt="foto1').on("click",function(){
+            //     vorm = "hoorntje"
+            // })
+            // $('div.verpakking li img[alt="foto2').on("click",function(){
+            //     vorm = "potje"
+            // })
 
-            $('div.sauzen li img[alt="foto4').on("click",function(){
-                sauzen = "chocoladesaus"
-            })
-            $('div.sauzen li img[alt="foto5').on("click",function(){
-                sauzen = "caramelsaus"
-            })
-            $('div.sauzen li img[alt="foto6').on("click",function(){
-                sauzen = "aardbeisaus"
-            })
+            // $('div.sauzen li img[alt="foto4').on("click",function(){
+            //     sauzen = "chocoladesaus"
+            // })
+            // $('div.sauzen li img[alt="foto5').on("click",function(){
+            //     sauzen = "caramelsaus"
+            // })
+            // $('div.sauzen li img[alt="foto6').on("click",function(){
+            //     sauzen = "aardbeisaus"
+            // })
 
-            $('div.extras li img[alt="foto7').on("click",function(){
-                extras = "bresiliennenootjes"
+            // $('div.extras li img[alt="foto7').on("click",function(){
+            //     extras = "bresiliennenootjes"
+            // })
+            // $('div.extras li img[alt="foto8').on("click",function(){
+            //     extras = "smarties"
+            // })
+            // $('div.extras li img[alt="foto9').on("click",function(){
+            //     extras = "waaiers"
+            // })
+            $(document).on("click","div.sauzen li img",function(){
+                $("#sauzenx").append($(this).attr("alt"))
             })
-            $('div.extras li img[alt="foto8').on("click",function(){
-                extras = "smarties"
+            $(document).on("click","div.verpakking li img",function(){
+                $("#vormx").append($(this).attr("alt"))
             })
-            $('div.extras li img[alt="foto9').on("click",function(){
-                extras = "waaiers"
+            $(document).on("click","div.extras li img",function(){
+                $("#extrasx").append($(this).attr("alt"))
             })
-
-
-
 
 
             $("#Overzicht").on("click", function(){
@@ -106,9 +116,9 @@
                 var naam = $("#naam").val()
                 $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
                 //$("#ijsbolx").append("gekozen bollen: " + "<br>" + "aantal bollen aardbei " + telleraardbei + "<br>" + "aantal bollen vanille " + tellervanille + "<br>" + "aantal bollen chocolade " + tellerchocolade)
-                $("#vormx").append("je hebt gekozen voor de vorm: " + vorm)
-                $("#sauzenx").append("de saus die je hebt gekozen: " + sauzen)
-                $("#extrasx").append("leuke extra! " + extras)
+                $("#vormx").append("je hebt gekozen voor de vorm: ")
+                $("#sauzenx").append("de saus die je hebt gekozen: ")
+                $("#extrasx").append("leuke extra! ")
             })
         })
     </script>
@@ -134,25 +144,25 @@
         <label for="verpakking">welke verpakking?</label>
         <div class="verpakking">
             <ul>
-                <li><img src="hoorntjeleeg.jpg" alt="foto1"></li>
-                <li><img src="ijspotjeleeg.jpg" alt="foto2"></li>
-                <li><img src="ijscoupexl.jpg" alt="foto3"></li>
+                <li><img src="hoorntjeleeg.jpg" alt="hoorntje"></li>
+                <li><img src="ijspotjeleeg.jpg" alt="potje"></li>
+                <li><img src="ijscoupexl.jpg" alt="coupeXL"></li>
             </ul>
         </div>
         <label for="sauzen">welke saus?</label>
         <div class="sauzen">
             <ul>
-                <li><img src="chocoladesaus.jpg" alt="foto4"></li>
-                <li><img src="caramelsaus.jpg" alt="foto5"></li>
-                <li><img src="aardbeisaus.webp" alt="foto6"></li>
+                <li><img src="chocoladesaus.jpg" alt="chocoladesaus"></li>
+                <li><img src="caramelsaus.jpg" alt="caramelsaus"></li>
+                <li><img src="aardbeisaus.webp" alt="aardbeisaus"></li>
             </ul>
         </div>
         <label for="extra">zin in wat extras?</label>
         <div class="extras">
             <ul>
-                <li><img src="bresiliennenootjes.jpg" alt="foto7"></li>
-                <li><img src="smarties.jpg" alt="foto8"></li>
-                <li><img src="waaiers.jpg" alt="foto9"></li>
+                <li><img src="bresiliennenootjes.jpg" alt="bresiliennenootjes"></li>
+                <li><img src="smarties.jpg" alt="smarties"></li>
+                <li><img src="waaiers.jpg" alt="waaiers"></li>
             </ul>
         </div>
         <button id="Overzicht">Toon overzicht</button>

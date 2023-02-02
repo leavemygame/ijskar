@@ -30,6 +30,10 @@ div.smaak ul li
 {
     list-style-type: none;
 }
+div.verpakking ul li
+{
+    display: inline-block;
+}
 #links
 {
     float: left;
@@ -50,7 +54,14 @@ div.extras ul li
 {
     display: inline-block;
 }
-
+.rand
+{
+    border : 2px solid red
+}
+.randaf
+{
+    border : 0px solid red
+}
 
 
 
