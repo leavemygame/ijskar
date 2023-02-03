@@ -13,17 +13,17 @@
     <title>ijsjes medric</title>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" href="ijskar.css">
-    <meta http-equiv="refresh" content="20">
+    <!-- <meta http-equiv="refresh" content="20"> -->
     <script>
         
         var tellerTotaal = 0
         var tellerTotaalmax = 3
-        
+        var tellerbollen = 3
         $(document).ready(function(){
             $(document).on("click", "div.bollen li", function(){
                 $(this).html(`
                     <div class="smaak">
-                        <ul alt="">
+                        <ul aria-placeholder="a">
                             <li><img src="aarbei ijsbol.PNG" alt="aardbei" ></li>
                             <li><img src="vanille ijsbol.PNG" alt="vanille" ></li>
                             <li><img src="chocolade ijsbol.PNG" alt="chocolade" ></li>
@@ -36,8 +36,10 @@
             $(document).on("click","div.smaak li img",function(){
                 $(this).parent().siblings().children("img").removeClass("rand")
                 $(this).toggleClass("rand")
-                $(this).parent("ul").attr("alt") = $(this).attr("alt")
-                
+                console.log($(this).parent().attr("aria-placeholder"))
+                //$(this).parent("ul").attr("alt") = $(this).attr("alt")
+                $(this).parent("ul").attr("aria-placeholder", $(this).attr("aria-placeholder")) // deze zou moeten werken, kan zijn dat hij zal moeten omgedraaid worden
+                console.log($(this).parent().attr("aria-placeholder"))
 
                 if (tellerTotaal < tellerTotaalmax) {
                     
@@ -60,14 +62,26 @@
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
             })
-            $('div.verpakking li img[alt="coupeXL').on("click",function(){
-                $("div.bollen").append(`
+            $('div.verpakking li img[alt="coupeXL').on("click",function(){ //hiermee stel ik een limiet in op het aantal bollen, zo dat er geen meerdere meer bij kunnen komen
+                tellerTotaalmax = 5                                         // nu enkel nog zorgen dat de 2 bollen terug weggaan als ik op de andere klik
+                if (tellerbollen < tellerTotaalmax) {
+                    $("div.bollen").append(`
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
                 `)
-
-                tellerTotaalmax = 5
+                tellerbollen += 2
+                }
             })
+            // $('div.verpakking li img[alt<>"coupeXL').on("click",function(){
+            //     tellerTotaalmax = 3
+                
+            //         $("div.bollen").prepend(`
+            //     <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
+            //     <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
+            //     `)
+            //     tellerbollen -= 2
+            //     }
+            // )
       
             $(document).on("click","div.sauzen li img",function(){
                 $("#sauzenx").append($(this).attr("alt"))
