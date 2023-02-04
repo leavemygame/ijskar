@@ -19,88 +19,134 @@
         var tellerTotaal = 0
         var tellerTotaalmax = 3
         var tellerbollen = 3
+        var tellerkeren = 0
+        var totaalprijs = 0
+        
         $(document).ready(function(){
+            function ToevoegenBollen() {
+                $("div.bollen").append(`
+                    <li alt="niet"><img src="leeg ijsbol.png" alt="foto2"  style="list-style-type: none;"></li>
+                    <li alt="niet"><img src="leeg ijsbol.png" alt="foto2"  style="list-style-type: none;"></li>
+                `);
+            }
             $(document).on("click", "div.bollen li", function(){
-                $(this).html(`
+                if ($(this).attr("alt") === "niet")
+                {
+                    alert("goed")
+                    $(this).html(`
                     <div class="smaak">
                         <ul aria-placeholder="a">
-                            <li><img src="aarbei ijsbol.PNG" alt="aardbei" ></li>
-                            <li><img src="vanille ijsbol.PNG" alt="vanille" ></li>
-                            <li><img src="chocolade ijsbol.PNG" alt="chocolade" ></li>
+                            <li><img src="aarbei ijsbol.PNG" alt="aardbei (0.50)" ></li>
+                            <li><img src="vanille ijsbol.PNG" alt="vanille (0.50)" ></li>
+                            <li><img src="chocolade ijsbol.PNG" alt="chocolade (0.75)" ></li>
                         </ul>
                     </div>
                 `)
                 $("div.bollen ul").css("width", "100%");
+                $(this).attr("alt", "wel") 
+                }
             })
            
             $(document).on("click","div.smaak li img",function(){
+                if ($(this).parent().parent("ul").attr("aria-placeholder") === "a")
+                {
                 $(this).parent().siblings().children("img").removeClass("rand")
-                $(this).toggleClass("rand")
-                console.log($(this).parent().attr("aria-placeholder"))
-                //$(this).parent("ul").attr("alt") = $(this).attr("alt")
-                $(this).parent("ul").attr("aria-placeholder", $(this).attr("aria-placeholder")) // deze zou moeten werken, kan zijn dat hij zal moeten omgedraaid worden
-                console.log($(this).parent().attr("aria-placeholder"))
+                $(this).parent().toggleClass("rand")
+                $(this).parent().parent("ul").attr("aria-placeholder", $(this).attr("alt"))
+                
+                    if ($(this).attr("alt") === "chocolade (0.75)")
+                    {
+                        totaalprijs += 0.75
+                    } else {
+                        totaalprijs += 0.50
+                    }
 
-                if (tellerTotaal < tellerTotaalmax) {
+                    if (tellerTotaal < tellerTotaalmax) {
                     
-                    tellerTotaal += 1
-                    $("#ijsbolx").append($(this).parent().attr("alt"))
-                } else {
-                alert("je hebt je maximale ijsbollen al bereikt")
-                }
-               
+                        tellerTotaal += 1
+                        $("#ijsbolx").append("bol " + tellerTotaal + ": " +  $(this).attr("alt") + "<br>")
+                    } else {
+                        alert("je hebt je maximale ijsbollen al bereikt")
+                    } 
+                }   
             })
             $(document).on("click",'div.verpakking li',function(){
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
-            })
+
+                if ($(this).children().attr("alt") === "coupeXL (2.00)"){
+                     tellerTotaalmax = 5                                      
+                if (tellerbollen < tellerTotaalmax) {
+                    if (tellerkeren === 0) {
+                        ToevoegenBollen();
+                        tellerkeren += 1
+                    }
+                    else
+                    {
+                        $("div.bollen li img[alt='foto2']").show();
+                    }
+                    tellerbollen += 2
+                }}
+                if ($(this).children().attr("alt") != "coupeXL (2.00)"){
+                     tellerTotaalmax = 3
+                     $("div.bollen li img[alt='foto2']").hide();
+                     tellerbollen -= 2
+                    }
+                $("#vormx").html("")
+                $("#vormx").append("Je hebt gekozen voor de vorm: " + $(this).children().attr("alt"))
+                if ($(this).children().attr("alt") === "coupeXL (2.00)")
+                {
+                    totaalprijs += 2.00
+                }
+                else
+                {
+                    totaalprijs += 1.00
+                }
+                }
+            )
             $(document).on("click",'div.sauzen li',function(){
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
+                $("#sauzenx").html("")
+                $("#sauzenx").append("De saus die je hebt gekozen: " + $(this).children().attr("alt"))
+                if ($(this).children().attr("alt") === "caramelsaus (1.50)")
+                {
+                    totaalprijs += 1.50
+                }
+                else
+                {
+                    totaalprijs += 1.00
+                }
             })
             $(document).on("click",'div.extras li',function(){
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
-            })
-            $('div.verpakking li img[alt="coupeXL').on("click",function(){ //hiermee stel ik een limiet in op het aantal bollen, zo dat er geen meerdere meer bij kunnen komen
-                tellerTotaalmax = 5                                         // nu enkel nog zorgen dat de 2 bollen terug weggaan als ik op de andere klik
-                if (tellerbollen < tellerTotaalmax) {
-                    $("div.bollen").append(`
-                <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-                <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-                `)
-                tellerbollen += 2
+                $("#extrasx").html("")
+                $("#extrasx").append("Leuke extra! " + $(this).children().attr("alt"))
+                if ($(this).children().attr("alt") === "waaiers (1.00)")
+                {
+                    totaalprijs += 1.00
+                }
+                else
+                {
+                    totaalprijs += 0.50
                 }
             })
-            // $('div.verpakking li img[alt<>"coupeXL').on("click",function(){
-            //     tellerTotaalmax = 3
-                
-            //         $("div.bollen").prepend(`
-            //     <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-            //     <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-            //     `)
-            //     tellerbollen -= 2
-            //     }
-            // )
-      
-            $(document).on("click","div.sauzen li img",function(){
-                $("#sauzenx").append($(this).attr("alt"))
-            })
-            $(document).on("click","div.verpakking li img",function(){
-                $("#vormx").append($(this).attr("alt"))
-            })
-            $(document).on("click","div.extras li img",function(){
-                $("#extrasx").append($(this).attr("alt"))
-            })
-
+           
+          
+        
 
             $("#Overzicht").on("click", function(){
-                
                 $("#rechts").show()
                 var naam = $("#naam").val()
-                $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-                
-               
+                $("#Aanspreking").html("")
+                $("#Aanspreking").append("hallo " + naam + ` zie hier een overzicht van je bestelling`)
+              
+            })
+            $("#toonprijs").on("click", function(){
+              
+                $("#prijsx").html("")
+                $("#prijsx").append("Te betalen: " + totaalprijs + "euro")
             })
         })
     </script>
@@ -116,9 +162,9 @@
         <label for="bollen">aantal bollen</label>
         <div class="bollen">
             <ul>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
+                <li alt="niet"><img src="leeg ijsbol.png" alt="foto" ></li>
+                <li alt="niet"><img src="leeg ijsbol.png" alt="foto" ></li>
+                <li alt="niet"><img src="leeg ijsbol.png" alt="foto" ></li>
                 
             </ul>
         </div>
@@ -126,25 +172,25 @@
         <label for="verpakking">welke verpakking?</label>
         <div class="verpakking">
             <ul>
-                <li><img src="hoorntjeleeg.jpg" alt="hoorntje"></li>
-                <li><img src="ijspotjeleeg.jpg" alt="potje"></li>
-                <li><img src="ijscoupexl.jpg" alt="coupeXL"></li>
+                <li><img src="hoorntjeleeg.jpg" alt="hoorntje (1.00)"></li>
+                <li><img src="ijspotjeleeg.jpg" alt="potje (1.00)"></li>
+                <li><img src="ijscoupexl.jpg" alt="coupeXL (2.00)"></li>
             </ul>
         </div>
         <label for="sauzen">welke saus?</label>
         <div class="sauzen">
             <ul>
-                <li><img src="chocoladesaus.jpg" alt="chocoladesaus"></li>
-                <li><img src="caramelsaus.jpg" alt="caramelsaus"></li>
-                <li><img src="aardbeisaus.webp" alt="aardbeisaus"></li>
+                <li><img src="chocoladesaus.jpg" alt="chocoladesaus (1.00)"></li>
+                <li><img src="caramelsaus.jpg" alt="caramelsaus (1.50)"></li>
+                <li><img src="aardbeisaus.webp" alt="aardbeisaus (1.00)"></li>
             </ul>
         </div>
         <label for="extra">zin in wat extras?</label>
         <div class="extras">
             <ul>
-                <li><img src="bresiliennenootjes.jpg" alt="bresiliennenootjes"></li>
-                <li><img src="smarties.jpg" alt="smarties"></li>
-                <li><img src="waaiers.jpg" alt="waaiers"></li>
+                <li><img src="bresiliennenootjes.jpg" alt="bresiliennenootjes (0.50)"></li>
+                <li><img src="smarties.jpg" alt="smarties (0.50)"></li>
+                <li><img src="waaiers.jpg" alt="waaiers (1.00)"></li>
             </ul>
         </div>
         <button id="Overzicht">Toon overzicht</button>
@@ -159,13 +205,18 @@
         <label for="ijsbollen" id="ijsbolx"></label>
         <br>
         <br>
-        <label for="vorm" id="vormx">Je hebt gekozen voor de vorm: </label>
+        <label for="vorm" id="vormx"></label>
         <br>
         <br>
-        <label for="sauzen" id="sauzenx">De saus die je hebt gekozen: </label>
+        <label for="sauzen" id="sauzenx"></label>
         <br>
         <br>
-        <label for="extras" id="extrasx">Leuke extra! </label>
+        <label for="extras" id="extrasx"></label>
+        <br>
+        <br>
+        <button id="toonprijs">Toon prijs</button>
+        <br>
+        <label for="prijs" id="prijsx"></label>
     </fieldset>
 </body>
 </html>
