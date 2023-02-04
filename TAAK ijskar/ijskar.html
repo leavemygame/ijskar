@@ -50,26 +50,21 @@
             })
            
             $(document).on("click","div.smaak li img",function(){
-                if ($(this).parent().parent("ul").attr("aria-placeholder") === "a")
+                if ($(this).parent().parent("ul").attr("aria-placeholder") !== "a")
                 {
-                
-                }   
-                else
-                {
-                alert("wow" + oproepzin + tellerTotaal + tekst)
-                $(oproepzin).remove("bol " + tellerTotaal + ": " + tekst + "<br>")
+                $(oproepzin).html("")
                 tellerTotaal -= 1
                 }
                 $(this).parent().siblings().removeClass("rand")
                 $(this).parent().addClass("rand")
                 $(this).parent().parent("ul").attr("aria-placeholder", $(this).attr("alt"))
                 
-                    if ($(this).attr("alt") === "chocolade (0.75)")
-                    {
-                        totaalprijs += 0.75
-                    } else {
-                        totaalprijs += 0.50
-                    }
+                    // if ($(this).attr("alt") === "chocolade (0.75)")
+                    // {
+                    //     tussentotaal += 0.75
+                    // } else {
+                    //     tussentotaal += 0.50
+                    // }
 
                     if (tellerTotaal < tellerTotaalmax) {
                     
@@ -155,7 +150,18 @@
               
             })
             $("#toonprijs").on("click", function(){
-              
+                for (var i = 1; i <= 5; i++) {
+                var itemId = "#" + i;
+                if ($(itemId).html !== ""){
+                    if ($(itemId).html === "bol " + tellerTotaal + ": " +  "chocolade (0.75)" + "<br>")
+                     {
+                        totaalprijs += 0.75
+                     } else { 
+                        totaalprijs += 0.50
+                     }
+                    }
+            }
+                
                 $("#prijsx").html("")
                 $("#prijsx").append("Te betalen: " + totaalprijs + "euro")
             })
