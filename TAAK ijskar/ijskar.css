@@ -3,7 +3,7 @@
 list-style-type: none;
 }
 body{
-    margin: 25px;
+  
     background-color: white;
 
 }
@@ -72,9 +72,6 @@ div.extras ul li
 }
 @media only screen and (max-width:900px) {
     #links, #rechts{
-        width: 100%;
-        margin-left: -10px;
-    }  
-    
-   
+        width: 95%;
+    }
 }

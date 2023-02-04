@@ -1,8 +1,4 @@
-<!-- nog te doen 
-    -beveiliging bij dubbelklikken op ijsbollen
-
-
--->
+<!-- Degroote Medric - 6IF - project ijskar -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +17,8 @@
         var tellerbollen = 3
         var tellerkeren = 0
         var totaalprijs = 0
-        var tussentotaal = 0
+        var tussenprijs = 0
         var oproepzin = ""
-        var tekst = ""
         $(document).ready(function(){
             function ToevoegenBollen() {
                 $("div.bollen").append(`
@@ -34,7 +29,6 @@
             $(document).on("click", "div.bollen li", function(){
                 if ($(this).attr("alt") === "niet")
                 {
-                    alert("goed")
                     $(this).html(`
                     <div class="smaak">
                         <ul aria-placeholder="a">
@@ -59,19 +53,11 @@
                 $(this).parent().addClass("rand")
                 $(this).parent().parent("ul").attr("aria-placeholder", $(this).attr("alt"))
                 
-                    // if ($(this).attr("alt") === "chocolade (0.75)")
-                    // {
-                    //     tussentotaal += 0.75
-                    // } else {
-                    //     tussentotaal += 0.50
-                    // }
-
                     if (tellerTotaal < tellerTotaalmax) {
                     
                         tellerTotaal += 1
                         oproepzin = "#" + tellerTotaal
                         $(oproepzin).append("bol " + tellerTotaal + ": " +  $(this).attr("alt") + "<br>")
-                        tekst = $(this).attr("alt")
                     } else {
                         alert("je hebt je maximale ijsbollen al bereikt")
                     } 
@@ -100,14 +86,6 @@
                     }
                 $("#vormx").html("")
                 $("#vormx").append("Je hebt gekozen voor de vorm: " + $(this).children().attr("alt"))
-                if ($(this).children().attr("alt") === "coupeXL (2.00)")
-                {
-                    totaalprijs += 2.00
-                }
-                else
-                {
-                    totaalprijs += 1.00
-                }
                 }
             )
             $(document).on("click",'div.sauzen li',function(){
@@ -115,28 +93,12 @@
                 $(this).toggleClass("rand")
                 $("#sauzenx").html("")
                 $("#sauzenx").append("De saus die je hebt gekozen: " + $(this).children().attr("alt"))
-                if ($(this).children().attr("alt") === "caramelsaus (1.50)")
-                {
-                    totaalprijs += 1.50
-                }
-                else
-                {
-                    totaalprijs += 1.00
-                }
             })
             $(document).on("click",'div.extras li',function(){
                 $(this).siblings().removeClass("rand")
                 $(this).toggleClass("rand")
                 $("#extrasx").html("")
                 $("#extrasx").append("Leuke extra! " + $(this).children().attr("alt"))
-                if ($(this).children().attr("alt") === "waaiers (1.00)")
-                {
-                    totaalprijs += 1.00
-                }
-                else
-                {
-                    totaalprijs += 0.50
-                }
             })
            
           
@@ -152,18 +114,47 @@
             $("#toonprijs").on("click", function(){
                 for (var i = 1; i <= 5; i++) {
                 var itemId = "#" + i;
-                if ($(itemId).html !== ""){
-                    if ($(itemId).html === "bol " + tellerTotaal + ": " +  "chocolade (0.75)" + "<br>")
+                if ($(itemId).html() !== ""){
+                    if ($(itemId).html() === "bol " + i + ": " +  "chocolade (0.75)" + "<br>")
                      {
-                        totaalprijs += 0.75
+                        tussenprijs += 0.75
                      } else { 
-                        totaalprijs += 0.50
+                        tussenprijs += 0.50
                      }
                     }
             }
-                
+                totaalprijs += tussenprijs
+                tussenprijs = 0
+                if ($("#vormx").html() !== ""){
+                    if ($("#vormx").html() === "Je hebt gekozen voor de vorm: " + "coupeXL (2.00)")
+                     {
+                        totaalprijs += 2.00
+                     } else { 
+                        totaalprijs += 1.00
+                     }
+                }
+                if ($("#sauzenx").html() !== ""){
+                   if ($("#sauzenx").html() === "De saus die je hebt gekozen: " + "caramelsaus (1.50)")
+                     {
+                        totaalprijs += 1.50
+                     } else { 
+                        totaalprijs += 1.00
+                     }  
+                }
+                    
+                    
+                if ($("#extrasx").html() !== ""){
+                    if ($("#extrasx").html() === "Leuke extra! " + "waaiers (1.00)")
+                     {
+                        totaalprijs += 1.00
+                     } else { 
+                        totaalprijs += 0.50
+                     }
+                }
+                    
                 $("#prijsx").html("")
                 $("#prijsx").append("Te betalen: " + totaalprijs + "euro")
+                totaalprijs = 0
             })
         })
     </script>
