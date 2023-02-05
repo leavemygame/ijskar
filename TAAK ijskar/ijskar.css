@@ -11,6 +11,8 @@ html
 {
     background-color: red;
 }
+
+/* links */
 .bollen ul
 {
     list-style-type: none;
@@ -40,12 +42,6 @@ div.verpakking ul li
     width: 45%;
     background-color: white;
 }
-#rechts
-{
-    float: right;
-    width: 45%;
-    background-color: white;
-}
 div.sauzen ul li
 {
     display: inline-block;
@@ -57,6 +53,15 @@ div.extras ul li
 .rand
 {
     border : 2px solid red
+}
+
+/* rechts */
+
+#rechts
+{
+    float: right;
+    width: 45%;
+    background-color: white;
 }
 
 
