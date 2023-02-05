@@ -8,10 +8,10 @@
         var oproepzin = ""
 
         $(document).ready(function(){
-            function ToevoegenBollen() {
-                $("div.bollen").append(`
-                    <li alt="niet"><img src="leeg ijsbol.png" alt="foto2"  style="list-style-type: none;"></li>
-                    <li alt="niet"><img src="leeg ijsbol.png" alt="foto2"  style="list-style-type: none;"></li>
+            function ToevoegenBollen() {                                                        // margin left wil wel niet werken
+                $("div.bollen").append(`                    
+                    <li alt="niet" style="list-style-type: none; margin-left: 35px;"><img src="fotos/leeg ijsbol.png" alt="foto2"  ></li>
+                    <li alt="niet" style="list-style-type: none; margin-left: 35px;"><img src="fotos/leeg ijsbol.png" alt="foto2"  ></li>
                 `);
             }
 
@@ -21,9 +21,9 @@
                     $(this).html(`
                     <div class="smaak">
                         <ul aria-placeholder="smaak">
-                            <li><img src="aarbei ijsbol.PNG" alt="aardbei (0.50)" ></li>
-                            <li><img src="vanille ijsbol.PNG" alt="vanille (0.50)" ></li>
-                            <li><img src="chocolade ijsbol.PNG" alt="chocolade (0.75)" ></li>
+                            <li><img src="fotos/aarbei ijsbol.PNG" alt="aardbei (0.50)" ></li>
+                            <li><img src="fotos/vanille ijsbol.PNG" alt="vanille (0.50)" ></li>
+                            <li><img src="fotos/chocolade ijsbol.PNG" alt="chocolade (0.75)" ></li>
                         </ul>
                     </div>
                 `)
