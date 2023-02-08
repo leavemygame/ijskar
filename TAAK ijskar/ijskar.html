@@ -1,90 +1,20 @@
+<!-- Degroote Medric - 6IF - project ijskar -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ijsjes medric</title>
+    <title>ijsjes Medric</title>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" href="ijskar.css">
-    <script>
-        var telleraardbei = 0
-        var tellervanille = 0
-        var tellerchocolade = 0
-        var tellerTotaal = 0
-        var tellerTotaalmax = 3
-        function aardbei()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    telleraardbei += 1
-                    console.log(telleraardbei + " aardbei")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-            }
-        function vanille()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    tellervanille += 1
-                    console.log(tellervanille + " vanille")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-                
-            }
-        function chocolade()
-            {
-                if (tellerTotaal < tellerTotaalmax) {
-                    tellerchocolade += 1
-                    console.log(tellerchocolade + " chocolade")
-                    tellerTotaal += 1
-                } else {
-                    alert("je hebt je maximale ijsbollen al bereikt")
-                }
-               
-            }
-        $(document).ready(function(){
-           
-           
-            
-            
-            $(document).on("click", "div.bollen li", function(){
-                $(this).html(`
-                    <div class="smaak">
-                        <ul>
-                            <li><img src="aarbei ijsbol.PNG" alt="aardbei" onclick="aardbei()"></li>
-                            <li><img src="vanille ijsbol.PNG" alt="vanille" onclick="vanille()"></li>
-                            <li><img src="chocolade ijsbol.PNG" alt="chocolade" onclick="chocolade()"></li>
-                        </ul>
-                    </div>
-                `)
-                $("div.bollen ul").css("width", "100%");
-            })
-            $('div.verpakking li').on("click",function(){
-                $(this).siblings().hide();
-            })
-            $('div.verpakking li img[alt="foto3').on("click",function(){
-                $("div.bollen").append(`
-                <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-                <li><img src="leeg ijsbol.png" alt="foto" style="list-style-type: none;"></li>
-                `)
-                tellerTotaalmax = 5
-            })
-            
-            $("#Overzicht").on("click", function(){
-                
-                $("#rechts").show()
-                var naam = $("#naam").val()
-                $("#Aanspreking").append(naam + ` zie hier een overzicht van je bestelling`)
-            })
-        })
-    </script>
+    <script type="text/javascript" src="ijskar.js"></script>
+  
 
 </head>
 <body>
-    
+    <!-- ik heb 2 fieldsets, eentje voor de bestelling in te geven en de ander voor het overzicht weer te geven -->
     <fieldset id="links">
         <legend>geef je bestelling in:</legend>
         <label for="naam">Wat is uw naam?</label>
@@ -93,9 +23,9 @@
         <label for="bollen">aantal bollen</label>
         <div class="bollen">
             <ul>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
-                <li><img src="leeg ijsbol.png" alt="foto"></li>
+                <li alt="niet"><img src="fotos/leeg ijsbol.png" alt="foto" ></li>
+                <li alt="niet"><img src="fotos/leeg ijsbol.png" alt="foto" ></li>
+                <li alt="niet"><img src="fotos/leeg ijsbol.png" alt="foto" ></li>
                 
             </ul>
         </div>
@@ -103,9 +33,25 @@
         <label for="verpakking">welke verpakking?</label>
         <div class="verpakking">
             <ul>
-                <li><img src="hoorntjeleeg.jpg" alt="foto"></li>
-                <li><img src="ijspotjeleeg.jpg" alt="foto"></li>
-                <li><img src="ijscoupexl.jpg" alt="foto3"></li>
+                <li><img src="fotos/hoorntjeleeg.jpg" alt="hoorntje (1.00)"></li>
+                <li><img src="fotos/ijspotjeleeg.jpg" alt="potje (1.00)"></li>
+                <li><img src="fotos/ijscoupexl.jpg" alt="coupeXL (2.00)"></li>
+            </ul>
+        </div>
+        <label for="sauzen">welke saus?</label>
+        <div class="sauzen">
+            <ul>
+                <li><img src="fotos/chocoladesaus.jpg" alt="chocoladesaus (1.00)"></li>
+                <li><img src="fotos/caramelsaus.jpg" alt="caramelsaus (1.50)"></li>
+                <li><img src="fotos/aardbeisaus.webp" alt="aardbeisaus (1.00)"></li>
+            </ul>
+        </div>
+        <label for="extra">zin in wat extras?</label>
+        <div class="extras">
+            <ul>
+                <li><img src="fotos/bresiliennenootjes.jpg" alt="bresiliennenootjes (0.50)"></li>
+                <li><img src="fotos/smarties.jpg" alt="smarties (0.50)"></li>
+                <li><img src="fotos/waaiers.jpg" alt="waaiers (1.00)"></li>
             </ul>
         </div>
         <button id="Overzicht">Toon overzicht</button>
@@ -114,6 +60,31 @@
     <fieldset id="rechts" hidden>
         <legend>Bestelling</legend>
         <label for="Aanspreking" id="Aanspreking">Hallo </label>
+        <br>
+        <br>
+        <br>
+        
+        <ul id="verzamelingbollen">
+            <li id="1"></li>
+            <li id="2"></li>
+            <li id="3"></li>
+            <li id="4"></li>
+            <li id="5"></li>
+        </ul>
+        <br>
+        <br>
+        <label for="vorm" id="vormx"></label>
+        <br>
+        <br>
+        <label for="sauzen" id="sauzenx"></label>
+        <br>
+        <br>
+        <label for="extras" id="extrasx"></label>
+        <br>
+        <br>
+        <button id="toonprijs">Toon prijs</button>
+        <br>
+        <label for="prijs" id="prijsx"></label>
     </fieldset>
 </body>
 </html>
