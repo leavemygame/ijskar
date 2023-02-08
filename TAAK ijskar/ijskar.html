@@ -9,6 +9,7 @@
     <title>ijsjes Medric</title>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link rel="stylesheet" href="ijskar.css">
+    <link rel="icon" href="fotos/Logo ijskar.png">
     <script type="text/javascript" src="ijskar.js"></script>
   
 
@@ -16,11 +17,14 @@
 <body>
     <!-- ik heb 2 fieldsets, eentje voor de bestelling in te geven en de ander voor het overzicht weer te geven -->
     <fieldset id="links">
-        <legend>geef je bestelling in:</legend>
+        <legend>Geef je bestelling in:</legend>
         <label for="naam">Wat is uw naam?</label>
         <input type="text" id="naam">
         <br>
-        <label for="bollen">aantal bollen</label>
+        <br>
+        <button id="openingsuren" onclick="openingsuren()">openingsuren</button>
+        <br>
+        <label for="bollen">Aantal bollen</label>
         <div class="bollen">
             <ul>
                 <li alt="niet"><img src="fotos/leeg ijsbol.png" alt="foto" ></li>
@@ -30,7 +34,7 @@
             </ul>
         </div>
         <br>
-        <label for="verpakking">welke verpakking?</label>
+        <label for="verpakking">Welke verpakking?</label>
         <div class="verpakking">
             <ul>
                 <li><img src="fotos/hoorntjeleeg.jpg" alt="hoorntje (1.00)"></li>
@@ -38,7 +42,7 @@
                 <li><img src="fotos/ijscoupexl.jpg" alt="coupeXL (2.00)"></li>
             </ul>
         </div>
-        <label for="sauzen">welke saus?</label>
+        <label for="sauzen">Welke saus?</label>
         <div class="sauzen">
             <ul>
                 <li><img src="fotos/chocoladesaus.jpg" alt="chocoladesaus (1.00)"></li>
@@ -46,7 +50,7 @@
                 <li><img src="fotos/aardbeisaus.webp" alt="aardbeisaus (1.00)"></li>
             </ul>
         </div>
-        <label for="extra">zin in wat extras?</label>
+        <label for="extra">Zin in wat extras?</label>
         <div class="extras">
             <ul>
                 <li><img src="fotos/bresiliennenootjes.jpg" alt="bresiliennenootjes (0.50)"></li>
@@ -55,6 +59,7 @@
             </ul>
         </div>
         <button id="Overzicht">Toon overzicht</button>
+        <button id="Reset" >Reset</button>
     </fieldset>
 
     <fieldset id="rechts" hidden>
@@ -85,6 +90,10 @@
         <button id="toonprijs">Toon prijs</button>
         <br>
         <label for="prijs" id="prijsx"></label>
+        <br>
+        <br>
+        <br>
+        <button id="bevestigen" onclick="bevestigen()">Bevestig bestelling</button>
     </fieldset>
 </body>
 </html>
